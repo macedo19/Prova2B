@@ -22,6 +22,7 @@ namespace API.Controllers
         [Route("list")]
         public IActionResult List() => Ok(_context.Vendas
             .Include(v => v.Itens)
+            .Include(p => p.Pagamento)
             .ToList());
     }
 }
