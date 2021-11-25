@@ -22,6 +22,10 @@ const routes: Routes = [
         path: "produto/cadastrar",
         component: CadastrarProdutoComponent,
     },
+    {
+        path: "produto/pagamento",
+        component: CadastrarProdutoComponent,
+    },
 ];
 
 @NgModule({

@@ -39,4 +39,8 @@ export class IndexComponent implements OnInit {
         });
     }
 
+    finalizarVenda(): void {
+        this.router.navigate(["home/venda"]);
+    }
+
 }
