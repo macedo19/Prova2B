@@ -2,15 +2,16 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ItemVenda } from "src/app/models/item-venda";
 import { Produto } from "src/app/models/produto";
+import { Venda } from "src/app/models/venda";
 import { ItemService } from "src/app/services/item.service";
 import { ProdutoService } from "src/app/services/produto.service";
 
 @Component({
-    selector: "app-index",
-    templateUrl: "./index.component.html",
-    styleUrls: ["./index.component.css"],
+    selector: "app-venda",
+    templateUrl: "./venda.component.html",
+    styleUrls: ["./venda.component.css"],
 })
-export class IndexComponent implements OnInit {
+export class VendaComponent implements OnInit {
     produtos: Produto[] = [];
 
     constructor(
@@ -25,13 +26,11 @@ export class IndexComponent implements OnInit {
         });
     }
 
-    adicionar(produto: Produto): void {
-        let item: ItemVenda = {
-            produto: produto,
-            produtoId: produto.produtoId!,
-            quantidade: 1,
-            preco: produto.preco,
-            carrinhoId: localStorage.getItem("carrinhoId")! || "",
+    adicionarVenda(venda: Venda): void {
+        let itemVenda: Venda = {
+            cliente: venda.cliente,
+            itens: venda.itens!,
+            pagamento: venda.pagamento,
         };
         this.itemService.create(item).subscribe((item) => {
             localStorage.setItem("carrinhoId", item.carrinhoId);
